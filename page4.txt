@@ -1,0 +1,36 @@
+package com.cogni.home;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Homepageservlet
+ */
+public class Homepageservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+
+    public Homepageservlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		String m_company=(String)request.getAttribute("com");
+		String m_user=request.getParameter("user_name");
+		out.println("<html><body bgcolor='red'>");
+	
+		out.println("<h1>"+m_company);
+		out.println("<h1>"+m_user);
+		out.println("</body></html>");
+	}
+
+}

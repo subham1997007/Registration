@@ -1,0 +1,56 @@
+package com.cogni.sample;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Servletdemo extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	BufferedReader br ;  
+    
+    public Servletdemo() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("int function started");
+		
+		String m_filename=config.getInitParameter("filename");
+		
+		try {
+		 br =new BufferedReader(new FileReader(m_filename));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		PrintWriter out=response.getWriter();
+		String line=null;
+		while((line=br.readLine()) !=null)
+		{
+			out.print(line);
+		}
+		//response.getWriter().append("subham kumnar").append(request.getContextPath());
+		
+	}
+
+}

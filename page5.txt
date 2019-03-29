@@ -1,0 +1,6 @@
+package com.cogni.dao;
+
+public interface LoginDao {
+	boolean validateLogin(String name, String pass,String url);
+
+}
